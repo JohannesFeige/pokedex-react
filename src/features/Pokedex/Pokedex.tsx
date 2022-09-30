@@ -9,6 +9,7 @@ import { PokemonItem } from './PokemonItem'
 export const Pokedex: React.FC = () => {
     const [pokedexResult, setPokedexResult] = useState<PokedexResult>()
     const [loading, setLoading] = useState(false)
+    const [url, setUrl] = useState<string>()
 
     const disableLoading = useCallback(() => {
         setTimeout(() => {
@@ -18,17 +19,10 @@ export const Pokedex: React.FC = () => {
 
     useEffect(() => {
         setLoading(true)
-        get()
-            .then((result) => setPokedexResult(result))
-            .finally(() => disableLoading())
-    }, [])
-
-    const buttonClickHandler = (url?: string) => {
-        setLoading(true)
         get(url)
             .then((result) => setPokedexResult(result))
             .finally(() => disableLoading())
-    }
+    }, [url])
 
     return (
         <>
@@ -38,10 +32,10 @@ export const Pokedex: React.FC = () => {
                 ))}
             </div>
             <div>
-                <Button disabled={!Boolean(pokedexResult?.previous)} onClick={() => buttonClickHandler(pokedexResult?.previous)}>
+                <Button disabled={!Boolean(pokedexResult?.previous)} onClick={() => setUrl(pokedexResult?.previous)}>
                     Previous
                 </Button>
-                <Button disabled={!Boolean(pokedexResult?.next)} onClick={() => buttonClickHandler(pokedexResult?.next)}>
+                <Button disabled={!Boolean(pokedexResult?.next)} onClick={() => setUrl(pokedexResult?.next)}>
                     Next
                 </Button>
             </div>
