@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Button } from '../../components/Button'
 import { PokedexResult } from '../../types/pokemon'
 import { get } from './api'
@@ -12,6 +12,10 @@ export const Pokedex: React.FC = () => {
         get().then((result) => setPokedexResult(result))
     }, [])
 
+    const buttonClickHandler = (url?: string) => {
+        get(url).then((result) => setPokedexResult(result))
+    }
+
     return (
         <>
             <div className={styles.pokedex}>
@@ -20,8 +24,12 @@ export const Pokedex: React.FC = () => {
                 ))}
             </div>
             <div>
-                <Button disabled>Previous</Button>
-                <Button>Next</Button>
+                <Button disabled={!Boolean(pokedexResult?.previous)} onClick={() => buttonClickHandler(pokedexResult?.previous)}>
+                    Previous
+                </Button>
+                <Button disabled={!Boolean(pokedexResult?.next)} onClick={() => buttonClickHandler(pokedexResult?.next)}>
+                    Next
+                </Button>
             </div>
         </>
     )
