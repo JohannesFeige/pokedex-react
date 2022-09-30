@@ -1,0 +1,1 @@
+export { Pokedex } from './Pokedex'

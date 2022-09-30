@@ -1,0 +1,7 @@
+.pokedex {
+    margin: 2rem auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: clamp(0.5rem, 1rem, 2rem);
+}

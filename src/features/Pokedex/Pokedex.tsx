@@ -1,18 +1,21 @@
 import { useEffect, useState } from 'react'
 import { PokedexResult } from '../../types/pokemon'
 import { get } from './api'
+import styles from './Pokedex.module.scss'
+import { PokemonItem } from './PokemonItem'
 
 export const Pokedex: React.FC = () => {
-    const [pokedex, setPokedex] = useState<PokedexResult>()
+    const [pokedexResult, setPokedexResult] = useState<PokedexResult>()
 
     useEffect(() => {
-        get().then((result) => setPokedex(result))
+        get().then((result) => setPokedexResult(result))
     }, [])
 
     return (
-        <>
-            <div>Pokedex</div>
-            <pre>{JSON.stringify(pokedex, null, 2)}</pre>
-        </>
+        <div className={styles.pokedex}>
+            {pokedexResult?.pokedex.map((pokemon) => (
+                <PokemonItem key={pokemon.id} {...pokemon} />
+            ))}
+        </div>
     )
 }

@@ -1,0 +1,45 @@
+.card {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border: 1px solid;
+    border-color: var(--card-border-color);
+    border-radius: 4px;
+
+    flex: 1 1 17%;
+
+    position: relative;
+}
+
+.item {
+    padding-top: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+
+    img {
+        max-width: 60%;
+    }
+}
+
+.id {
+    position: absolute;
+    position: absolute;
+    padding: 0.25rem 0.75rem;
+    border-top-left-radius: 0.25rem;
+    border-bottom-right-radius: 0.5rem;
+    background: var(--card-border-color);
+    color: var(--main-background);
+    top: -1px;
+    left: -1px;
+    font-weight: bold;
+}
+
+.name {
+    font-size: 1.25em;
+    text-transform: capitalize;
+}
+
+.types {
+    font-size: 0.8em;
+}
