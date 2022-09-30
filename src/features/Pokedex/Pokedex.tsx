@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Button } from '../../components/Button'
 import { PokedexResult } from '../../types/pokemon'
 import { get } from './api'
 import styles from './Pokedex.module.scss'
@@ -12,10 +13,16 @@ export const Pokedex: React.FC = () => {
     }, [])
 
     return (
-        <div className={styles.pokedex}>
-            {pokedexResult?.pokedex.map((pokemon) => (
-                <PokemonItem key={pokemon.id} {...pokemon} />
-            ))}
-        </div>
+        <>
+            <div className={styles.pokedex}>
+                {pokedexResult?.pokedex.map((pokemon) => (
+                    <PokemonItem key={pokemon.id} {...pokemon} />
+                ))}
+            </div>
+            <div>
+                <Button disabled>Previous</Button>
+                <Button>Next</Button>
+            </div>
+        </>
     )
 }

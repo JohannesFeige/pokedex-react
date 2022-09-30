@@ -1,0 +1,23 @@
+.button {
+    background-color: var(--secondary-background);
+    border: 1px solid var(--secondary-background);
+    color: goldenrod;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    margin: 0 0.5rem;
+    cursor: pointer;
+
+    transition-duration: .3s;
+
+    &:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+    }
+
+    &:hover {
+        background-color: var(--background);
+    }
+}
