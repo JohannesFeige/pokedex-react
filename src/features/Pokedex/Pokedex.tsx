@@ -1,5 +1,6 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { Button } from '../../components/Button'
+import { LoadingSpinner } from '../../components/LoadingSpinner'
 import { PokedexResult } from '../../types/pokemon'
 import { get } from './api'
 import styles from './Pokedex.module.scss'
@@ -7,13 +8,26 @@ import { PokemonItem } from './PokemonItem'
 
 export const Pokedex: React.FC = () => {
     const [pokedexResult, setPokedexResult] = useState<PokedexResult>()
+    const [loading, setLoading] = useState(false)
+
+    const disableLoading = useCallback(() => {
+        setTimeout(() => {
+            setLoading(false)
+        }, 200)
+    }, [setLoading])
 
     useEffect(() => {
-        get().then((result) => setPokedexResult(result))
+        setLoading(true)
+        get()
+            .then((result) => setPokedexResult(result))
+            .finally(() => disableLoading())
     }, [])
 
     const buttonClickHandler = (url?: string) => {
-        get(url).then((result) => setPokedexResult(result))
+        setLoading(true)
+        get(url)
+            .then((result) => setPokedexResult(result))
+            .finally(() => disableLoading())
     }
 
     return (
@@ -31,6 +45,7 @@ export const Pokedex: React.FC = () => {
                     Next
                 </Button>
             </div>
+            <LoadingSpinner show={loading} />
         </>
     )
 }
