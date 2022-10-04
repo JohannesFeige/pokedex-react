@@ -1,31 +1,31 @@
 export type PokemonResponseResult = {
-    name: string;
-    url: string;
-};
+    name: string
+    url: string
+}
 
 export type PokemonListResponse = {
-    count: number;
-    next: string | null;
-    previous: string | null;
-    results: PokemonResponseResult[];
-};
+    count: number
+    next?: string
+    previous?: string
+    results: PokemonResponseResult[]
+}
 
 export type PokemonResponse = {
-    id: number;
-    name: string;
-    types: Type[];
-    sprites: Sprites;
-};
+    id: number
+    name: string
+    types: Type[]
+    sprites: Sprites
+}
 
 type Type = {
-    slot: number;
-    type: { name: string; url: string };
-};
+    slot: number
+    type: { name: string; url: string }
+}
 
 type Sprites = {
     other: {
         'official-artwork': {
-            front_default: string;
-        };
-    };
-};
+            front_default: string
+        }
+    }
+}
