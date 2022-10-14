@@ -5,6 +5,8 @@ export type Pokemon = {
     imageSrc: string
 }
 
+export type PokemonDetail = {} & Pokemon
+
 export type PokedexResult = {
     pokedex: Pokemon[]
     next?: string

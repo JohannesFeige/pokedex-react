@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 import { PokedexResult } from '../types/pokemon'
-import { get } from './api'
+import { get } from './pokedexApi'
 
 export const usePokedexApi = () => {
     const [pokedexResult, setPokedexResult] = useState<PokedexResult>()
