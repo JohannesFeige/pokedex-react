@@ -1,5 +1,5 @@
 .button {
-    background-color: var(--secondary-background);
+    background-color: var(--background);
     border: 1px solid var(--secondary-background);
     color: goldenrod;
     padding: 15px 32px;
@@ -17,7 +17,7 @@
         cursor: not-allowed;
     }
 
-    &:hover {
-        background-color: var(--background);
+    &:hover:not(:disabled) {
+        background-color: var(--secondary-background);
     }
 }
