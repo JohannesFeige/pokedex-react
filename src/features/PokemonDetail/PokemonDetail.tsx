@@ -26,7 +26,7 @@ export const PokemonDetail: React.FC = () => {
                         <div>
                             <span>Base Stat Total: {pokemon.stats.reduce((sum, stat) => sum + stat.value, 0)}</span>
                             {pokemon.stats.map((stat) => (
-                                <Stat key={stat.name} {...stat} />
+                                <Stat key={`${pokemonName}-${stat.name}`} {...stat} />
                             ))}
                         </div>
                     </div>
