@@ -5,7 +5,12 @@ export type Pokemon = {
     imageSrc: string
 }
 
-export type PokemonDetail = {} & Pokemon
+export type PokemonDetail = {
+    stats: {
+        name: string
+        value: number
+    }[]
+} & Pokemon
 
 export type PokedexResult = {
     pokedex: Pokemon[]

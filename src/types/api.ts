@@ -15,6 +15,7 @@ export type PokemonResponse = {
     name: string
     types: Type[]
     sprites: Sprites
+    stats: Stat[]
 }
 
 type Type = {
@@ -27,5 +28,12 @@ type Sprites = {
         'official-artwork': {
             front_default: string
         }
+    }
+}
+
+type Stat = {
+    base_stat: number
+    stat: {
+        name: string
     }
 }

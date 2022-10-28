@@ -1,0 +1,100 @@
+@mixin typeDefault {    
+    border-radius: 4px;
+
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    margin-inline: 4px;
+    text-align: center;
+
+    text-transform: capitalize;
+}
+
+.normal {
+    @include typeDefault();
+    background-color: #ACA974;
+}
+
+.fighting {
+    @include typeDefault();
+    background-color: #800B11;
+}
+
+.flying {
+    @include typeDefault();
+    background-color: #085764;
+}
+
+.poison {
+    @include typeDefault();
+    background-color: #611380;
+}
+
+.ground {
+    @include typeDefault();
+    background-color: #BFAC21;
+}
+
+.rock {
+    @include typeDefault();
+    background-color: #BFAC21;
+}
+
+.bug {
+    @include typeDefault();
+    background-color: #91BA2E;
+}
+
+.ghost {
+    @include typeDefault();
+    background-color: #472B53;
+}
+
+.steel {
+    @include typeDefault();
+    background-color: #454545;
+}
+
+.fire {
+    @include typeDefault();
+    background-color: #FC0C0B;
+}
+
+.water {
+    @include typeDefault();
+    background-color: #08517A;
+}
+
+.grass {
+    @include typeDefault();
+    background-color: #204000;
+}
+
+.electric {
+    @include typeDefault();
+    background-color: #969101;
+}
+
+.psychic {
+    @include typeDefault();
+    background-color: #8A0532;
+}
+
+.ice {
+    @include typeDefault();
+    background-color: #103D43;
+}
+
+.dragon {
+    @include typeDefault();
+    background-color: #29036A;
+}
+
+.dark {
+    @include typeDefault();
+    background-color: #2D221C;
+}
+
+.fairy {
+    @include typeDefault();
+    background-color: #F87EA7;
+}

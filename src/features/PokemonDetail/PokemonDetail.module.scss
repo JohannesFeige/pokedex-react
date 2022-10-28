@@ -1,0 +1,14 @@
+.header {
+    text-transform: capitalize;
+}
+
+.content {
+    display: flex;
+}
+
+.actions {
+    display: flex;
+    gap: 0.5rem;
+
+    justify-content: center;
+}
