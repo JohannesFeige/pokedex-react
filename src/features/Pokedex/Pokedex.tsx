@@ -3,9 +3,10 @@ import { LoadingSpinner } from '../../components/LoadingSpinner'
 import styles from './Pokedex.module.scss'
 import { PokemonItem } from './PokemonItem'
 import { usePokedexApi } from '../../hooks/usePokedexApi'
+import { useContext } from 'react'
 
 export const Pokedex: React.FC = () => {
-    const { pokedex, isFetching, hasNext, hasPrevious, fetchNext, fetchPrevious } = usePokedexApi()
+    const { pokedex, hasNext, hasPrevious, fetchNext, fetchPrevious } = usePokedexApi()
 
     return (
         <>
@@ -22,7 +23,6 @@ export const Pokedex: React.FC = () => {
                     Next
                 </Button>
             </div>
-            <LoadingSpinner show={isFetching} />
         </>
     )
 }

@@ -9,7 +9,7 @@ import { Stat } from './Stat'
 
 export const PokemonDetail: React.FC = () => {
     const { pokemonName } = useParams()
-    const { pokemon, isFetching } = usePokemonDetailApi(pokemonName)
+    const { pokemon } = usePokemonDetailApi(pokemonName)
 
     return (
         <>
@@ -40,7 +40,6 @@ export const PokemonDetail: React.FC = () => {
                     </div>
                 </div>
             )}
-            <LoadingSpinner show={isFetching} />
         </>
     )
 }

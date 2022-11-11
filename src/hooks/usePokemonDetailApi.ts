@@ -1,23 +1,24 @@
 import { useCallback, useEffect, useState } from 'react'
+import { useLoading } from '../context/loadingContext'
 import { PokemonDetail } from '../types/pokemon'
 import { get } from './pokemonDetailApi'
 
 export const usePokemonDetailApi = (pokemonName?: string) => {
     const [pokemon, setPokemon] = useState<PokemonDetail>()
-    const [loading, setLoading] = useState(false)
+    const { startLoading, stopLoading } = useLoading()
 
     const disableLoading = useCallback(() => {
         setTimeout(() => {
-            setLoading(false)
+            stopLoading()
         }, 200)
-    }, [setLoading])
+    }, [stopLoading])
 
     useEffect(() => {
         if (!pokemonName) {
             return
         }
 
-        setLoading(true)
+        startLoading()
         get(pokemonName)
             .then((result) => setPokemon(result))
             .finally(() => disableLoading())
@@ -25,6 +26,5 @@ export const usePokemonDetailApi = (pokemonName?: string) => {
 
     return {
         pokemon: pokemon,
-        isFetching: loading,
     }
 }

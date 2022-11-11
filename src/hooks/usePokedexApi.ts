@@ -1,20 +1,21 @@
 import { useCallback, useEffect, useState } from 'react'
+import { useLoading } from '../context/loadingContext'
 import { PokedexResult } from '../types/pokemon'
 import { get } from './pokedexApi'
 
 export const usePokedexApi = () => {
     const [pokedexResult, setPokedexResult] = useState<PokedexResult>()
-    const [loading, setLoading] = useState(false)
     const [url, setUrl] = useState<string>()
+    const { startLoading, stopLoading } = useLoading()
 
     const disableLoading = useCallback(() => {
         setTimeout(() => {
-            setLoading(false)
+            stopLoading()
         }, 200)
-    }, [setLoading])
+    }, [stopLoading])
 
     useEffect(() => {
-        setLoading(true)
+        startLoading()
         get(url)
             .then((result) => setPokedexResult(result))
             .finally(() => disableLoading())
@@ -22,7 +23,6 @@ export const usePokedexApi = () => {
 
     return {
         pokedex: pokedexResult?.pokedex,
-        isFetching: loading,
         hasPrevious: Boolean(pokedexResult?.previous),
         hasNext: Boolean(pokedexResult?.next),
         fetchPrevious: () => setUrl(pokedexResult?.previous),
