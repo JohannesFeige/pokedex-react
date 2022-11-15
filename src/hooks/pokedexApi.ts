@@ -1,5 +1,5 @@
-import { PokemonListResponse, PokemonResponse } from '../../types/api'
-import { PokedexResult, Pokemon } from '../../types/pokemon'
+import { PokemonListResponse, PokemonResponse } from '../types/api'
+import { PokedexResult, Pokemon } from '../types/pokemon'
 
 const baseUrl = 'https://pokeapi.co/api/v2/pokemon/'
 

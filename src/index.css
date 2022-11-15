@@ -3,6 +3,8 @@
   --secondary-background: #444444;
   --card-border-color: #cebf7b;
   --color: #e0e0e0;
+
+  box-sizing: border-box;
 }
 
 html {
