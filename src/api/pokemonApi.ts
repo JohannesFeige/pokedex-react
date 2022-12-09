@@ -17,12 +17,14 @@ const transformPokemon = (raw: PokemonResponse) => {
     return pokemon
 }
 
+const splitQuery = (url?: string) => `?${url?.split('?')?.[1] ?? ''}`
+
 export const pokemonApi = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: 'https://pokeapi.co/api/v2/pokemon/' }),
     endpoints: (builder) => ({
         pokedex: builder.query<PokedexResult, string>({
             async queryFn(arg, _queryApi, _extraOptions, fetchWithBQ) {
-                const response = await fetchWithBQ(`?${arg}`)
+                const response = await fetchWithBQ(arg)
 
                 if (response.error) {
                     return { error: response.error }
@@ -37,8 +39,8 @@ export const pokemonApi = createApi({
                     : {
                           data: {
                               pokedex: result.map((x) => transformPokemon(x.data as PokemonResponse)),
-                              next: pokedexResult.next?.split('?')[1],
-                              previous: pokedexResult.previous?.split('?')[1],
+                              next: splitQuery(pokedexResult.next),
+                              previous: splitQuery(pokedexResult.previous),
                           } as PokedexResult,
                       }
             },

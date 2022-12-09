@@ -27,7 +27,6 @@ export const Pokedex: React.FC = () => {
                     Next
                 </Button>
             </div>
-            <pre>{JSON.stringify(data, null, 2)}</pre>
         </>
     )
 }
