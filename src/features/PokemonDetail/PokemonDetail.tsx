@@ -1,15 +1,13 @@
-import { Link, useParams } from 'react-router-dom'
-import { Button } from '../../components/Button'
+import { useParams } from 'react-router-dom'
+import { usePokemonQuery } from '../../api/pokemonApi'
 import { LinkButton } from '../../components/LinkButton'
-import { LoadingSpinner } from '../../components/LoadingSpinner'
-import { usePokemonDetailApi } from '../../hooks/usePokemonDetailApi'
 import styles from './PokemonDetail.module.scss'
 import { PokemonType } from './PokemonType'
 import { Stat } from './Stat'
 
 export const PokemonDetail: React.FC = () => {
     const { pokemonName } = useParams()
-    const { pokemon } = usePokemonDetailApi(pokemonName)
+    const { data: pokemon } = usePokemonQuery(pokemonName!)
 
     return (
         <>

@@ -1,28 +1,33 @@
+import { useState } from 'react'
+import { usePokedexQuery } from '../../api/pokemonApi'
 import { Button } from '../../components/Button'
-import { LoadingSpinner } from '../../components/LoadingSpinner'
 import styles from './Pokedex.module.scss'
 import { PokemonItem } from './PokemonItem'
-import { usePokedexApi } from '../../hooks/usePokedexApi'
-import { useContext } from 'react'
 
 export const Pokedex: React.FC = () => {
-    const { pokedex, hasNext, hasPrevious, fetchNext, fetchPrevious } = usePokedexApi()
+    const [queryParams, setQueryParams] = useState('')
+    const { data } = usePokedexQuery(queryParams)
+
+    if (!data) {
+        return null
+    }
 
     return (
         <>
             <div className={styles.pokedex}>
-                {pokedex?.map((pokemon) => (
+                {data.pokedex?.map((pokemon) => (
                     <PokemonItem key={pokemon.id} {...pokemon} />
                 ))}
             </div>
             <div>
-                <Button disabled={!hasPrevious} onClick={fetchPrevious}>
+                <Button disabled={!data.previous} onClick={() => setQueryParams(data.previous!)}>
                     Previous
                 </Button>
-                <Button disabled={!hasNext} onClick={fetchNext}>
+                <Button disabled={!data.next} onClick={() => setQueryParams(data.next!)}>
                     Next
                 </Button>
             </div>
+            <pre>{JSON.stringify(data, null, 2)}</pre>
         </>
     )
 }
