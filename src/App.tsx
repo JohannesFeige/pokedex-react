@@ -7,16 +7,21 @@ import { Header } from './features/Header'
 import { Pokedex } from './features/Pokedex'
 import { PokemonDetail } from './features/PokemonDetail/PokemonDetail'
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+    [
+        {
+            path: '/',
+            element: <Pokedex />,
+        },
+        {
+            path: ':pokemonName',
+            element: <PokemonDetail />,
+        },
+    ],
     {
-        path: '/',
-        element: <Pokedex />,
-    },
-    {
-        path: ':pokemonName',
-        element: <PokemonDetail />,
-    },
-])
+        basename: '/pokedex-react',
+    }
+)
 
 export const App: React.FC = () => {
     const { isLoading } = useLoading()
