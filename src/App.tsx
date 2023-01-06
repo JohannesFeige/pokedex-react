@@ -6,16 +6,21 @@ import { PokemonDetail } from './features/PokemonDetail/PokemonDetail'
 import { LoadingProvider, useLoading } from './context/loadingContext'
 import { LoadingSpinner } from './components/LoadingSpinner'
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+    [
+        {
+            path: '/',
+            element: <Pokedex />,
+        },
+        {
+            path: ':pokemonName',
+            element: <PokemonDetail />,
+        },
+    ],
     {
-        path: '/',
-        element: <Pokedex />,
-    },
-    {
-        path: ':pokemonName',
-        element: <PokemonDetail />,
-    },
-])
+        basename: '/pokedex-react',
+    }
+)
 
 export const App: React.FC = () => {
     const { isLoading } = useLoading()
