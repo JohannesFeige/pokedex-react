@@ -1,16 +1,15 @@
 import { Pokemon } from '../../types/pokemon'
 import styles from './PokemonItem.module.scss'
 
-export const PokemonItem: React.FC<Pokemon> = ({ id, imageSrc, name, types }) => {
+// todo: how do you get the props?
+export const PokemonItem: React.FC<Pokemon> = () => {
     return (
         <div className={styles.card}>
             <div className={styles.item}>
-                <div className={styles.id}>#{id}</div>
-                <div className="image">
-                    <img src={imageSrc} />
-                </div>
-                <div className={styles.name}>{name}</div>
-                <div className={styles.types}>{types.join(', ')}</div>
+                <div className={styles.id}>{/* todo: id goes here */}</div>
+                <div className="image">{/* todo: lets render the image from imageSrc */}</div>
+                <div className={styles.name}>{/* todo: name goes here */}</div>
+                <div className={styles.types}>{/* todo: types goes here */}</div>
             </div>
         </div>
     )

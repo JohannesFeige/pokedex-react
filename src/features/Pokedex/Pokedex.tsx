@@ -1,10 +1,8 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useState } from 'react'
 import { Button } from '../../components/Button'
 import { LoadingSpinner } from '../../components/LoadingSpinner'
 import { PokedexResult } from '../../types/pokemon'
-import { get } from './api'
 import styles from './Pokedex.module.scss'
-import { PokemonItem } from './PokemonItem'
 
 export const Pokedex: React.FC = () => {
     const [pokedexResult, setPokedexResult] = useState<PokedexResult>()
@@ -17,25 +15,22 @@ export const Pokedex: React.FC = () => {
         }, 200)
     }, [setLoading])
 
-    useEffect(() => {
-        setLoading(true)
-        get(url)
-            .then((result) => setPokedexResult(result))
-            .finally(() => disableLoading())
-    }, [url])
+    // todo: every time the url changes (even on the first render - url is undefined there)
+    // - start loading animation
+    // - request the pokemon via { get } from api
+    // - then save the pokedexResult for the next render cycle
+    // - finally disable the loading animation
+    // - oh, did I mentioned that this should be done every time the url changes?
 
     return (
         <>
-            <div className={styles.pokedex}>
-                {pokedexResult?.pokedex.map((pokemon) => (
-                    <PokemonItem key={pokemon.id} {...pokemon} />
-                ))}
-            </div>
+            <div className={styles.pokedex}>{/* todo: lets render a <PokemonItem /> for every entry in the pokedexResult */}</div>
             <div>
-                <Button disabled={!Boolean(pokedexResult?.previous)} onClick={() => setUrl(pokedexResult?.previous)}>
+                {/* todo: when should the button be disabled? what should happen onClick? */}
+                <Button disabled={false} onClick={() => {}}>
                     Previous
                 </Button>
-                <Button disabled={!Boolean(pokedexResult?.next)} onClick={() => setUrl(pokedexResult?.next)}>
+                <Button disabled={false} onClick={() => {}}>
                     Next
                 </Button>
             </div>
