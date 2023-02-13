@@ -3,10 +3,17 @@ import { LoadingSpinner } from '../../components/LoadingSpinner'
 import styles from './Pokedex.module.scss'
 import { PokemonItem } from './PokemonItem'
 import { usePokedexApi } from '../../hooks/usePokedexApi'
+import { Pokemon } from '../../types/pokemon'
+
+// TODO: following variables should come from a custom hook:
+const pokedex: Pokemon[] = []
+const isFetching = false
+const hasNext = false
+const hasPrevious = false
+const fetchNext = () => {}
+const fetchPrevious = () => {}
 
 export const Pokedex: React.FC = () => {
-    const { pokedex, isFetching, hasNext, hasPrevious, fetchNext, fetchPrevious } = usePokedexApi()
-
     return (
         <>
             <div className={styles.pokedex}>
