@@ -14,10 +14,11 @@ const router = createBrowserRouter(
             path: ':pokemonName',
             element: <PokemonDetail />,
         },
-    ],
-    {
-        basename: '/pokedex-react',
-    }
+    ]
+    // necessary for for gh pages
+    // {
+    //     basename: '/pokedex-react',
+    // }
 )
 
 export const App: React.FC = () => {
