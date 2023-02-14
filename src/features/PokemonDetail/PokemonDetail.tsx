@@ -1,6 +1,3 @@
-import { Link, useParams } from 'react-router-dom'
-import { Button } from '../../components/Button'
-import { LinkButton } from '../../components/LinkButton'
 import { LoadingSpinner } from '../../components/LoadingSpinner'
 import { usePokemonDetailApi } from '../../hooks/usePokemonDetailApi'
 import styles from './PokemonDetail.module.scss'
@@ -8,7 +5,9 @@ import { PokemonType } from './PokemonType'
 import { Stat } from './Stat'
 
 export const PokemonDetail: React.FC = () => {
-    const { pokemonName } = useParams()
+    // where do you get the name of the pokemon from?
+    // maybe there is a hook you can use?
+    const pokemonName = ''
     const { pokemon, isFetching } = usePokemonDetailApi(pokemonName)
 
     return (
@@ -32,11 +31,9 @@ export const PokemonDetail: React.FC = () => {
                     </div>
 
                     <div className={styles.actions}>
-                        <LinkButton to={`../${pokemon.id - 1}`} disabled={pokemon.id === 1}>
-                            &laquo; Previous
-                        </LinkButton>
-                        <LinkButton to="..">Overview</LinkButton>
-                        <LinkButton to={`../${pokemon.id + 1}`}>Next &raquo;</LinkButton>
+                        {/* add three buttons here: previous, overview, next */}
+                        {/* use the LinkButton component here // maybe you could find a */}
+                        {/* clever way in https://reactrouter.com/en/main/components/link for navigating */}
                     </div>
                 </div>
             )}
